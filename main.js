@@ -1,9 +1,6 @@
 use strict";
 // declaring all the mathematical equations in terms of arrow function
 // for weight 
-const KilogramsToPounds = (kilograms) => kilograms * 2.20462;
-const PoundsToKilograms = (Pounds) => Pounds * 0.45359237;
-
 const kgInput = document.getElementById("kg-input");
 const poundInput = document.getElementById("pound-input");
 const handleKilogramsToPoundsConversion = () => {
@@ -20,8 +17,6 @@ kgInput.addEventListener('input', handleKilogramsToPoundsConversion);
 poundInput.addEventListener('input', handlePoundsToKilogramsConversion);
 
 // for distance
-const KilometersToMiles = (kilometers) => kilometers * 0.621371;
-const MilesToKilometers = (miles) => miles * 1.609344;
 
 const milesInput = document.getElementById("miles-input");
 const kilometersInput = document.getElementById("kilometers-input");
@@ -42,38 +37,8 @@ milesInput.addEventListener("input", handleMilesToKilometersConversion);
 kilometersInput.addEventListener("input", handleKilometersToMilesConversion);
 
 // for temperature
-const CelsiusToFahrenheit = (celsius) => (celsius * 9 / 5) + 32;
-const FahrenheitToCelsius = (fahrenheit) => (fahrenheit - 32) * 5 / 9;
 
-// Higher-order conversion function
-const createConverter = (fromUnit, toUnit) => {
-    if (fromUnit === "kg" && toUnit === "lb") 
-    {return (value) => value * 2.20462;}
 
-    if (fromUnit === "lb" && toUnit === "kg") 
-    {return (value) => value * 0.45359237;}
-
-    if (fromUnit === "km" && toUnit === "mi") 
-    {return (value) => value * 0.621371;}
-
-    if (fromUnit === "mi" && toUnit === "km") 
-    {return (value) => value * 1.609344;}
-
-    if (fromUnit === "c" && toUnit === "f") 
-    {return (value) => (value * 9 / 5) + 32;}
-
-    if (fromUnit === "f" && toUnit === "c") 
-    {return (value) => (value - 32) * 5 / 9;}
-
-    return (value) => value;};
-
-const convertValues = (converter, values) => {
-    if (Array.isArray(values)) {
-        return values.map(converter);
-    }
-
-    return converter(values);
-};
 
 const celsiusInput = document.getElementById("celsius-input");
 const fahrenheitInput = document.getElementById("fahrenheit-input");
