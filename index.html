@@ -1,114 +1,150 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Metric-Converter</title>
-</head>
-<body class = "bg-slate-100 min-h-screen">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metric-Converter</title>
+  </head>
+  <body class="bg-slate-100 min-h-screen">
+    <header class="bg-yellow-500 border-b border-slate-200">
+      <div
+        class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <h1 class="text-lg font-bold text-black">Metric Converter</h1>
 
-  <header class = "bg-yellow-500 border-b border-slate-200" >
-    <div class = "max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-      <h1 class = "text-lg font-bold text-black-500">
-        Metric Converter 
-      </h1>
+        <nav class="flex gap-2">
+          <button
+            id="weight-tab"
+            class="px-4 py-2 rounded-lg bg-black text-white"
+          >
+            Weight
+          </button>
 
-      <span class = "text-xs font-semibold text-balck-500 bg-red-600 px-4 py-2 rounded-full">
-        Convert in seconds
-      </span>
-    </div>
+          <button
+            id="distance-tab"
+            class="px-4 py-2 rounded-lg bg-yellow-400 text-black"
+          >
+            Distance
+          </button>
 
-  </header>
-   
-  <section class = "max-w-5xl mx-auto px-6 pt-12 pb-8 text-center">
-    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">
-      Convert anything , instantly
-    </h2>
+          <button
+            id="temperature-tab"
+            class="px-4 py-2 rounded-lg bg-yellow-400 text-black"
+          >
+            Temperature
+          </button>
+        </nav>
+      </div>
+    </header>
 
-    <p  class = "text-base text-slate-600 mt-3 max-w-xl mx-auto">
-      Three metrics covered : Weight , Distance , Temperature
-    </p>
-  </section>
+    <section class="max-w-5xl mx-auto px-6 pt-12 pb-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">
+        Convert anything , instantly
+      </h2>
 
-  <main class = "max-w-5xl mx-auto px-6 pb-16">
-    <div class = " grid  grid-cols-1 md:grid-cols-3 gap-6 items-stretch ">
-      
+      <p class="text-base text-slate-600 mt-3 max-w-xl mx-auto">
+        Three metrics covered : Weight , Distance , Temperature
+      </p>
+    </section>
+
+    <main class="max-w-5xl mx-auto px-6 pb-16">
       <!-- calculation of the Weight -->
-       <div class ="bg-white rounded-2xl shadow-md p-6">
+      <div id="weight-page" class="bg-white rounded-2xl shadow-md p-6 max-w-xl mx-auto">
+        <h3 class="text-lg font-bold text-slate-900 text-center">Weight</h3>
+        <label for="kg-input" class="inline text-sm font-medium text-slate-700"
+          >Kilograms</label
+        >
 
-       <h3 class = "text-lg font-bold text-slate-900 text-center"> Weight </h3>
-       <label for="kg-input" class="inline text-sm font-medium text-slate-700  ">Kilograms</label>
+        <input
+          id="kg-input"
+          type="number"
+          value="0"
+          class="w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-900 focus:border-blue-500 focus:outline-none mb-4"
+        />
+        <br />
 
-       <input id = "kg-input"
-       type = number 
-       value = "0"
-       class = " w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-900 
-       focus:border-blue-500 focus:outine-none mb-4 "> <br>
-       
-       <label for="pound-input" class=" inline text-sm font-medium text-slate-700 mr-4  ">Pounds</label>
+        <label
+          for="pound-input"
+          class="inline text-sm font-medium text-slate-700 mr-4"
+          >Pounds</label
+        >
 
-       <input id = "pound-input"
-       type = number 
-       value = "0"
-       class = "w-full inline rounded-lg border border-slate-300 px-4 py-2 text-slate-900 
-       focus:border-blue-500 focus:outine-none">
+        <input
+          id="pound-input"
+          type="number"
+          value="0"
+          class="w-full inline rounded-lg border border-slate-300 px-4 py-2 text-slate-900 focus:border-blue-500 focus:outline-none"
+        />
+      </div>
 
-       </div>
+      <!-- calculation of distance  -->
+      <div id="distance-page" class="hidden bg-white rounded-2xl shadow-md p-6 max-w-xl mx-auto">
+        <h3 class="text-lg font-bold text-slate-900 text-center">Distance</h3>
+        <label
+          for="miles-input"
+          class="inline text-sm font-medium text-slate-700 pr-12.5"
+          >Miles</label
+        >
 
-       <!-- calculation of distance  -->
-      <div class ="bg-white rounded-2xl shadow-md p-6">
+        <input
+          id="miles-input"
+          type="number"
+          value="0"
+          class="inline w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-900 focus:border-blue-500 focus:outline-none mb-4"
+        />
+        <br />
 
-       <h3 class = "text-lg font-bold text-slate-900 text-center"> Distance </h3>
-       <label for="miles-input" class="inline text-sm font-medium text-slate-700 pr-12.5 ">Miles</label>
+        <label
+          for="Kilometers-input"
+          class="inline text-sm font-medium text-slate-700 mr-4"
+          >kilometers</label
+        >
 
-       <input id = "miles-input"
-       type = number 
-       value = "0"
-       class = "inline w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-900 
-       focus:border-blue-500 focus:outine-none mb-4"> <br>
-       
-       <label for="Kilometres-input" class=" inline text-sm font-medium text-slate-700 mr-4  ">kilometres</label>
+        <input
+          id="kilometers-input"
+          type="number"
+          value="0"
+          class="inline w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-900 focus:border-blue-500 focus:outline-none"
+        />
+      </div>
 
-       <input id = "kilometres-input"
-       type = number 
-       value = "0"
-       class = "inline w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-900 
-       focus:border-blue-500 focus:outine-none">
+      <!-- calculation of the Temperature -->
+      <div id="temperature-page" class="hidden bg-white rounded-2xl shadow-md p-6 max-w-xl mx-auto">
+        <h3 class="text-lg font-bold text-slate-900 text-center">
+          Temperature
+        </h3>
+        <label
+          for="celsius-input"
+          class="inline text-sm font-medium text-slate-700 pr-8"
+          >Celsius</label
+        >
 
-       </div>
+        <input
+          id="celsius-input"
+          type="number"
+          value="0"
+          class="inline w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-900 focus:border-blue-500 focus:outline-none mb-4"
+        />
+        <br />
 
-       <!-- calculation of the Temperature -->
-      <div class ="bg-white rounded-2xl shadow-md p-6">
+        <label
+          for="Farenheit-input"
+          class="inline text-sm font-medium text-slate-700 mr-4"
+          >Farenhiet</label
+        >
 
-       <h3 class = "text-lg font-bold text-slate-900 text-center"> Temperature </h3>
-       <label for="celsius-input" class="inline text-sm font-medium text-slate-700 pr-8 ">Celsius</label>
+        <input
+          id="Farenheit-input"
+          type="number"
+          value="0"
+          class="inline w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-900 focus:border-blue-500 focus:outline-none"
+        />
+      </div>
+    </main>
 
-       <input id = "celsius-input"
-       type = number 
-       value = "0"
-       class = "inline w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-900 
-       focus:border-blue-500 focus:outine-none mb-4"> <br>
-       
-       <label for="Farenhiet-input" class=" inline text-sm font-medium text-slate-700 mr-4  ">Farenhiet</label>
+    <footer></footer>
+  </body>
 
-       <input id = "kilometres-input"
-       type = number 
-       value = "0"
-       class = "inline w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-900 
-       focus:border-blue-500 focus:outine-none">
-
-       </div>
-
-    </div>
-
-  </main>
-
-  <footer>
-
-  </footer>
-  
-</body>
-
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-<script type="module" src = "/main.ts"></script>
-</html>  
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script type="module" src="/main.js"></script>
+</html>
