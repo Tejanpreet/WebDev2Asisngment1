@@ -19,6 +19,53 @@ const CelsiusToFahrenheit = (celsius: number): number =>
 const FahrenheitToCelsius = (fahrenheit: number): number =>
   ((fahrenheit - 32) * 5) / 9;
 
+// Higher-order conversion function
+const createConverter = (
+  fromUnit: string,
+  toUnit: string
+): ((value: number) => number) => {
+
+  if (fromUnit === "kg" && toUnit === "lb") {
+    return (value: number) => value * 2.20462;
+  }
+
+  if (fromUnit === "lb" && toUnit === "kg") {
+    return (value: number) => value * 0.45359237;
+  }
+
+  if (fromUnit === "km" && toUnit === "mi") {
+    return (value: number) => value * 0.621371;
+  }
+
+  if (fromUnit === "mi" && toUnit === "km") {
+    return (value: number) => value * 1.609344;
+  }
+
+  if (fromUnit === "c" && toUnit === "f") {
+    return (value: number) => (value * 9) / 5 + 32;
+  }
+
+  if (fromUnit === "f" && toUnit === "c") {
+    return (value: number) => ((value - 32) * 5) / 9;
+  }
+
+  return (value: number) => value;
+};
+
+
+// Converts either a single value or an array of values
+const convertValues = (
+  converter: (value: number) => number,
+  values: number | number[]
+): number | number[] => {
+
+  if (Array.isArray(values)) {
+    return values.map(converter);
+  }
+
+  return converter(values);
+};
+
 const kgInput = document.getElementById("kg-input") as HTMLInputElement;
 const poundInput = document.getElementById("pound-input") as HTMLInputElement;
 
@@ -37,6 +84,60 @@ const poundInput = document.getElementById("pound-input") as HTMLInputElement;
 
 kgInput.addEventListener('input' , handleKilogramsToPoundsConversion);
 poundInput.addEventListener('input' , handlePoundsToKilogramsConversion);
+
+// Distance conversion
+const milesInput = document.getElementById("miles-input") as HTMLInputElement;
+const kilometersInput = document.getElementById("kilometers-input") as HTMLInputElement;
+
+const handleMilesToKilometersConversion = (): void => {
+  const miles: number = Number(milesInput.value);
+  const kilometers: number = MilesToKilometers(miles);
+
+  kilometersInput.value = isNaN(kilometers) ? '' : kilometers.toFixed(2);
+};
+
+const handleKilometersToMilesConversion = (): void => {
+  const kilometers: number = Number(kilometersInput.value);
+  const miles: number = KilometersToMiles(kilometers);
+
+  milesInput.value = isNaN(miles) ? '' : miles.toFixed(2);
+};
+
+milesInput.addEventListener('input', handleMilesToKilometersConversion);
+kilometersInput.addEventListener('input', handleKilometersToMilesConversion);  
+
+// Temperature conversion
+const celsiusInput =
+  document.getElementById("celsius-input") as HTMLInputElement;
+
+const fahrenheitInput =
+  document.getElementById("fahrenheit-input") as HTMLInputElement;
+
+const handleCelsiusToFahrenheitConversion = (): void => {
+  const celsius: number = Number(celsiusInput.value);
+  const fahrenheit: number = CelsiusToFahrenheit(celsius);
+
+  fahrenheitInput.value =
+    isNaN(fahrenheit) ? '' : fahrenheit.toFixed(2);
+};
+
+const handleFahrenheitToCelsiusConversion = (): void => {
+  const fahrenheit: number = Number(fahrenheitInput.value);
+  const celsius: number = FahrenheitToCelsius(fahrenheit);
+
+  celsiusInput.value =
+    isNaN(celsius) ? '' : celsius.toFixed(2);
+};
+
+celsiusInput.addEventListener(
+  'input',
+  handleCelsiusToFahrenheitConversion
+);
+
+fahrenheitInput.addEventListener(
+  'input',
+  handleFahrenheitToCelsiusConversion
+);
 
 // Buttons for tabs
 const weightTab = document.getElementById("weight-tab")!;
