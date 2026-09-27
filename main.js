@@ -4,7 +4,14 @@
 const KilogramsToPounds = (kilograms) => kilograms * 2.20462;
 const PoundsToKilograms = (Pounds) => Pounds * 0.45359237;
 // for distance
+const KilometersToMiles = (kilometers) => kilometers * 0.621371;
+
+const MilesToKilometers = (miles) => miles * 1.609344;
+
 // for temperature
+const CelsiusToFahrenheit = (celsius) => (celsius * 9 / 5) + 32;
+
+const FahrenheitToCelsius = (fahrenheit) => (fahrenheit - 32) * 5 / 9;
 const kgInput = document.getElementById("kg-input");
 const poundInput = document.getElementById("pound-input");
 const handleKilogramsToPoundsConversion = () => {
