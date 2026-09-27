@@ -5,10 +5,19 @@ const KilogramsToPounds =(kilograms : number):number => kilograms * 2.20462 ;
 const PoundsToKilograms = (Pounds : number) : number => Pounds * 0.45359237;
 
 // for distance
+const KilometersToMiles = (kilometers: number): number =>
+  kilometers * 0.621371;
+
+const MilesToKilometers = (miles: number): number =>
+  miles * 1.609344;
 
 
 // for temperature
+const CelsiusToFahrenheit = (celsius: number): number =>
+  (celsius * 9) / 5 + 32;
 
+const FahrenheitToCelsius = (fahrenheit: number): number =>
+  ((fahrenheit - 32) * 5) / 9;
 
 const kgInput = document.getElementById("kg-input") as HTMLInputElement;
 const poundInput = document.getElementById("pound-input") as HTMLInputElement;
