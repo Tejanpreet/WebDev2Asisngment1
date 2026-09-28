@@ -42,7 +42,7 @@ const farenheitInput = document.getElementById("farenheit-input");
 const handleCelsiusToFarenheitConversion = () => {
     const celsius = Number(celsiusInput.value);
     const farenheit = CelsiusToFarenheit(celsius);
-    fahrenheitInput.value = isNaN(farenheit) ? "" : farenheit.toFixed(2);
+    farenheitInput.value = isNaN(farenheit) ? "" : farenheit.toFixed(2);
 };
 const handleFarenheitToCelsiusConversion = () => {
     const farenheit = Number(farenheitInput.value);
