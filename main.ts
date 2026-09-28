@@ -1,11 +1,21 @@
-// declaring all the mathematical equations in terms of arrow function
+/*
+WebDev 2 Group 4 - 
+  Tejanpreet
+  Guilherme
+  Seungwon
 
-// for weight 
+date: Oct 28, 2026
+This is the Typescript code, this is what the web page depends on to work properly.
+This code is divided into sections, first into each of the tabs, then makes the NavBar work
+*/
+// declaring all the mathematical equations in terms of arrow function
+// Converter for weight 
 const KilogramsToPounds =(kilograms : number):number => kilograms * 2.20462 ;
 const PoundsToKilograms = (Pounds : number) : number => Pounds * 0.45359237;
 
 const kgInput = document.getElementById("kg-input") as HTMLInputElement;
 const poundInput = document.getElementById("pound-input") as HTMLInputElement;
+
 const handleKilogramsToPoundsConversion = (): void => {
     const Kilograms = Number(kgInput.value);
     const pounds = KilogramsToPounds(Kilograms);
@@ -16,11 +26,12 @@ const handlePoundsToKilogramsConversion = () => {
     const kilograms = PoundsToKilograms(pounds);
     kgInput.value = isNaN(kilograms) ? '' : kilograms.toFixed(2);
 };
+
 kgInput.addEventListener('input', handleKilogramsToPoundsConversion);
 poundInput.addEventListener('input', handlePoundsToKilogramsConversion);
 
 
-// for distance
+// Converter for distance
 const KilometersToMiles = (kilometers: number): number =>
   kilometers * 0.621371;
 
@@ -35,7 +46,6 @@ const handleMilesToKilometersConversion = () => {
     const kilometers = MilesToKilometers(miles);
     kilometersInput.value = isNaN(kilometers) ? "" : kilometers.toFixed(2);
 };
-
 const handleKilometersToMilesConversion = () => {
     const kilometers = Number(kilometersInput.value);
     const miles = KilometersToMiles(kilometers);
@@ -45,7 +55,7 @@ const handleKilometersToMilesConversion = () => {
 milesInput.addEventListener("input", handleMilesToKilometersConversion);
 kilometersInput.addEventListener("input", handleKilometersToMilesConversion);
 
-// for temperature
+// Converter for temperature
 const CelsiusToFarenheit = (celsius: number) => (celsius * 9) / 5 + 32;
 const FarenheitToCelsius = (farenheit: number) => ((farenheit - 32) * 5) / 9;
 
@@ -57,7 +67,6 @@ const handleCelsiusToFarenheitConversion = () => {
     const farenheit = CelsiusToFarenheit(celsius);
     farenheitInput.value = isNaN(farenheit) ? "" : farenheit.toFixed(2);
 };
-
 const handleFarenheitToCelsiusConversion = () => {
     const farenheit = Number(farenheitInput.value);
     const celsius = FarenheitToCelsius(farenheit);
