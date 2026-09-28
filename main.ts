@@ -110,20 +110,20 @@ kilometersInput.addEventListener('input', handleKilometersToMilesConversion);
 const celsiusInput =
   document.getElementById("celsius-input") as HTMLInputElement;
 
-const fahrenheitInput =
-  document.getElementById("fahrenheit-input") as HTMLInputElement;
+const farenheitInput =
+  document.getElementById("farenheit-input") as HTMLInputElement;
 
-const handleCelsiusToFahrenheitConversion = (): void => {
+const handleCelsiusToFarenheitConversion = (): void => {
   const celsius: number = Number(celsiusInput.value);
-  const fahrenheit: number = CelsiusToFahrenheit(celsius);
+  const farenheit: number = CelsiusToFahrenheit(celsius);
 
-  fahrenheitInput.value =
-    isNaN(fahrenheit) ? '' : fahrenheit.toFixed(2);
+  farenheitInput.value =
+    isNaN(farenheit) ? '' : farenheit.toFixed(2);
 };
 
-const handleFahrenheitToCelsiusConversion = (): void => {
-  const fahrenheit: number = Number(fahrenheitInput.value);
-  const celsius: number = FahrenheitToCelsius(fahrenheit);
+const handleFarenheitToCelsiusConversion = (): void => {
+  const farenheit: number = Number(farenheitInput.value);
+  const celsius: number = FahrenheitToCelsius(farenheit);
 
   celsiusInput.value =
     isNaN(celsius) ? '' : celsius.toFixed(2);
@@ -131,12 +131,12 @@ const handleFahrenheitToCelsiusConversion = (): void => {
 
 celsiusInput.addEventListener(
   'input',
-  handleCelsiusToFahrenheitConversion
+  handleCelsiusToFarenheitConversion
 );
 
-fahrenheitInput.addEventListener(
+farenheitInput.addEventListener(
   'input',
-  handleFahrenheitToCelsiusConversion
+  handleFarenheitToCelsiusConversion
 );
 
 // Buttons for tabs
