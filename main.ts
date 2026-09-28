@@ -19,9 +19,13 @@ const handlePoundsToKilogramsConversion = () => {
 kgInput.addEventListener('input', handleKilogramsToPoundsConversion);
 poundInput.addEventListener('input', handlePoundsToKilogramsConversion);
 
+
 // for distance
-const KilometersToMiles = (kilometers: number) => kilometers * 0.621371;
-const MilesToKilometers = (miles: number) => miles * 1.609344;
+const KilometersToMiles = (kilometers: number): number =>
+  kilometers * 0.621371;
+
+const MilesToKilometers = (miles: number): number =>
+  miles * 1.609344;
 
 const milesInput = document.getElementById("miles-input") as HTMLInputElement;
 const kilometersInput = document.getElementById("kilometers-input") as HTMLInputElement;
@@ -42,65 +46,81 @@ milesInput.addEventListener("input", handleMilesToKilometersConversion);
 kilometersInput.addEventListener("input", handleKilometersToMilesConversion);
 
 // for temperature
-const CelsiusToFahrenheit = (celsius: number) => (celsius * 9 / 5) + 32;
-const FahrenheitToCelsius = (fahrenheit: number) => (fahrenheit - 32) * 5 / 9;
-
-// Higher-order conversion function
-const createConverter = (fromUnit: string, toUnit: string) => {
-    if (fromUnit === "kg" && toUnit === "lb") 
-    {return (value: number) => value * 2.20462;}
-
-    if (fromUnit === "lb" && toUnit === "kg") 
-    {return (value: number) => value * 0.45359237;}
-
-    if (fromUnit === "km" && toUnit === "mi") 
-    {return (value: number) => value * 0.621371;}
-
-    if (fromUnit === "mi" && toUnit === "km") 
-    {return (value: number) => value * 1.609344;}
-
-    if (fromUnit === "c" && toUnit === "f") 
-    {return (value: number) => (value * 9 / 5) + 32;}
-
-    if (fromUnit === "f" && toUnit === "c") 
-    {return (value: number) => (value - 32) * 5 / 9;}
-
-    return (value: number) => value;};
-
-const convertValues = (converter, values: number[]) => {
-    if (Array.isArray(values)) {
-        return values.map(converter);
-    }
-
-    return converter(values);
-};
+const CelsiusToFarenheit = (celsius: number) => (celsius * 9) / 5 + 32;
+const FarenheitToCelsius = (farenheit: number) => ((farenheit - 32) * 5) / 9;
 
 const celsiusInput = document.getElementById("celsius-input") as HTMLInputElement;
-const fahrenheitInput = document.getElementById("fahrenheit-input") as HTMLInputElement;
+const farenheitInput = document.getElementById("farenheit-input") as HTMLInputElement;
 
-const handleCelsiusToFahrenheitConversion = () => {
+const handleCelsiusToFarenheitConversion = () => {
     const celsius = Number(celsiusInput.value);
-    const fahrenheit = CelsiusToFahrenheit(celsius);
-    fahrenheitInput.value = isNaN(fahrenheit) ? "" : fahrenheit.toFixed(2);
+    const farenheit = CelsiusToFarenheit(celsius);
+    farenheitInput.value = isNaN(farenheit) ? "" : farenheit.toFixed(2);
 };
 
-const handleFahrenheitToCelsiusConversion = () => {
-    const fahrenheit = Number(fahrenheitInput.value);
-    const celsius = FahrenheitToCelsius(fahrenheit);
+const handleFarenheitToCelsiusConversion = () => {
+    const farenheit = Number(farenheitInput.value);
+    const celsius = FarenheitToCelsius(farenheit);
     celsiusInput.value = isNaN(celsius) ? "" : celsius.toFixed(2);
 };
 
-celsiusInput.addEventListener("input", handleCelsiusToFahrenheitConversion);
-fahrenheitInput.addEventListener("input", handleFahrenheitToCelsiusConversion);
+celsiusInput.addEventListener("input", handleCelsiusToFarenheitConversion);
+farenheitInput.addEventListener("input", handleFarenheitToCelsiusConversion);
+
+// Higher-order conversion function
+const createConverter = (
+  fromUnit: string,
+  toUnit: string
+): ((value: number) => number) => {
+
+  if (fromUnit === "kg" && toUnit === "lb") {
+    return (value: number) => value * 2.20462;
+  }
+
+  if (fromUnit === "lb" && toUnit === "kg") {
+    return (value: number) => value * 0.45359237;
+  }
+
+  if (fromUnit === "km" && toUnit === "mi") {
+    return (value: number) => value * 0.621371;
+  }
+
+  if (fromUnit === "mi" && toUnit === "km") {
+    return (value: number) => value * 1.609344;
+  }
+
+  if (fromUnit === "c" && toUnit === "f") {
+    return (value: number) => (value * 9) / 5 + 32;
+  }
+
+  if (fromUnit === "f" && toUnit === "c") {
+    return (value: number) => ((value - 32) * 5) / 9;
+  }
+
+  return (value: number) => value;
+};
+
+// Converts either a single value or an array of values
+const convertValues = (
+  converter: (value: number) => number,
+  values: number | number[]
+): number | number[] => {
+
+  if (Array.isArray(values)) {
+    return values.map(converter);
+  }
+
+  return converter(values);
+};
 
 // Buttons for tabs
-const weightTab = document.getElementById("weight-tab")!;
-const distanceTab = document.getElementById("distance-tab")!;
-const temperatureTab = document.getElementById("temperature-tab")!;
+const weightTab = document.getElementById("weight-tab") as HTMLButtonElement;
+const distanceTab = document.getElementById("distance-tab") as HTMLButtonElement;
+const temperatureTab = document.getElementById("temperature-tab") as HTMLButtonElement;
 
-const weightPage = document.getElementById("weight-page")!;
-const distancePage = document.getElementById("distance-page")!;
-const temperaturePage = document.getElementById("temperature-page")!;
+const weightPage = document.getElementById("weight-page") as HTMLElement;
+const distancePage = document.getElementById("distance-page") as HTMLElement;
+const temperaturePage = document.getElementById("temperature-page") as HTMLElement;
 
 // Makes it easy to see what tab you're on
 function setActiveTab(activeTab: HTMLElement) {
