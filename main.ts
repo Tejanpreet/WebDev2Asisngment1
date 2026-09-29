@@ -17,11 +17,21 @@ const kgInput = document.getElementById("kg-input") as HTMLInputElement;
 const poundInput = document.getElementById("pound-input") as HTMLInputElement;
 
 const handleKilogramsToPoundsConversion = (): void => {
+
+    if (kgInput.value.trim()  === ""){
+      poundInput.value = "";
+      return;
+    }
     const Kilograms = Number(kgInput.value);
     const pounds = KilogramsToPounds(Kilograms);
     poundInput.value = isNaN(pounds) ? '' : pounds.toFixed(2);
 };
 const handlePoundsToKilogramsConversion = () => {
+
+    if (poundInput.value.trim() === ""){
+      kgInput.value = "";
+      return;
+    }
     const pounds = Number(poundInput.value);
     const kilograms = PoundsToKilograms(pounds);
     kgInput.value = isNaN(kilograms) ? '' : kilograms.toFixed(2);
@@ -42,11 +52,22 @@ const milesInput = document.getElementById("miles-input") as HTMLInputElement;
 const kilometersInput = document.getElementById("kilometers-input") as HTMLInputElement;
 
 const handleMilesToKilometersConversion = () => {
+    if (milesInput.value.trim() === ""){
+      kilometersInput.value = "";
+      return;
+    }
+
     const miles = Number(milesInput.value);
     const kilometers = MilesToKilometers(miles);
     kilometersInput.value = isNaN(kilometers) ? "" : kilometers.toFixed(2);
 };
 const handleKilometersToMilesConversion = () => {
+
+  if (kilometersInput.value.trim() === ""){
+    milesInput.value = "";
+    return;
+  }
+  
     const kilometers = Number(kilometersInput.value);
     const miles = KilometersToMiles(kilometers);
     milesInput.value = isNaN(miles) ? "" : miles.toFixed(2);
@@ -63,11 +84,23 @@ const celsiusInput = document.getElementById("celsius-input") as HTMLInputElemen
 const farenheitInput = document.getElementById("farenheit-input") as HTMLInputElement;
 
 const handleCelsiusToFarenheitConversion = () => {
+
+    if (celsiusInput.value.trim() === ""){
+      farenheitInput.value = "";
+      return ;
+    }
+
     const celsius = Number(celsiusInput.value);
     const farenheit = CelsiusToFarenheit(celsius);
     farenheitInput.value = isNaN(farenheit) ? "" : farenheit.toFixed(2);
 };
 const handleFarenheitToCelsiusConversion = () => {
+
+    if (farenheitInput.value.trim() === ""){
+      celsiusInput.value = "";
+      return;
+    }
+
     const farenheit = Number(farenheitInput.value);
     const celsius = FarenheitToCelsius(farenheit);
     celsiusInput.value = isNaN(celsius) ? "" : celsius.toFixed(2);

@@ -1,50 +1,83 @@
-"use strict";
+/*
+WebDev 2 Group 4 -
+  Tejanpreet
+  Guilherme
+  Seungwon
+
+date: Oct 28, 2026
+This is the Typescript code, this is what the web page depends on to work properly.
+This code is divided into sections, first into each of the tabs, then makes the NavBar work
+*/
 // declaring all the mathematical equations in terms of arrow function
-// for weight 
+// Converter for weight 
 const KilogramsToPounds = (kilograms) => kilograms * 2.20462;
 const PoundsToKilograms = (Pounds) => Pounds * 0.45359237;
 const kgInput = document.getElementById("kg-input");
 const poundInput = document.getElementById("pound-input");
 const handleKilogramsToPoundsConversion = () => {
+    if (kgInput.value.trim() === "") {
+        poundInput.value = "";
+        return;
+    }
     const Kilograms = Number(kgInput.value);
     const pounds = KilogramsToPounds(Kilograms);
     poundInput.value = isNaN(pounds) ? '' : pounds.toFixed(2);
 };
 const handlePoundsToKilogramsConversion = () => {
+    if (poundInput.value.trim() === "") {
+        poundInput.value = "";
+        return;
+    }
     const pounds = Number(poundInput.value);
     const kilograms = PoundsToKilograms(pounds);
     kgInput.value = isNaN(kilograms) ? '' : kilograms.toFixed(2);
 };
 kgInput.addEventListener('input', handleKilogramsToPoundsConversion);
 poundInput.addEventListener('input', handlePoundsToKilogramsConversion);
-// for distance
+// Converter for distance
 const KilometersToMiles = (kilometers) => kilometers * 0.621371;
 const MilesToKilometers = (miles) => miles * 1.609344;
 const milesInput = document.getElementById("miles-input");
 const kilometersInput = document.getElementById("kilometers-input");
 const handleMilesToKilometersConversion = () => {
+    if (milesInput.value.trim() === "") {
+        kilometersInput.value = "";
+        return;
+    }
     const miles = Number(milesInput.value);
     const kilometers = MilesToKilometers(miles);
     kilometersInput.value = isNaN(kilometers) ? "" : kilometers.toFixed(2);
 };
 const handleKilometersToMilesConversion = () => {
+    if (kilometersInput.value.trim() === "") {
+        milesInput.value = "";
+        return;
+    }
     const kilometers = Number(kilometersInput.value);
     const miles = KilometersToMiles(kilometers);
     milesInput.value = isNaN(miles) ? "" : miles.toFixed(2);
 };
 milesInput.addEventListener("input", handleMilesToKilometersConversion);
 kilometersInput.addEventListener("input", handleKilometersToMilesConversion);
-// for temperature
+// Converter for temperature
 const CelsiusToFarenheit = (celsius) => (celsius * 9) / 5 + 32;
 const FarenheitToCelsius = (farenheit) => ((farenheit - 32) * 5) / 9;
 const celsiusInput = document.getElementById("celsius-input");
 const farenheitInput = document.getElementById("farenheit-input");
 const handleCelsiusToFarenheitConversion = () => {
+    if (celsiusInput.value.trim() === "") {
+        farenheitInput.value = "";
+        return;
+    }
     const celsius = Number(celsiusInput.value);
     const farenheit = CelsiusToFarenheit(celsius);
     farenheitInput.value = isNaN(farenheit) ? "" : farenheit.toFixed(2);
 };
 const handleFarenheitToCelsiusConversion = () => {
+    if (farenheitInput.value.trim() === "") {
+        farenheitInput.value = "";
+        return;
+    }
     const farenheit = Number(farenheitInput.value);
     const celsius = FarenheitToCelsius(farenheit);
     celsiusInput.value = isNaN(celsius) ? "" : celsius.toFixed(2);
@@ -120,3 +153,4 @@ temperatureTab.addEventListener("click", () => {
     temperaturePage.classList.remove("hidden");
     setActiveTab(temperatureTab);
 });
+//# sourceMappingURL=main.js.map
